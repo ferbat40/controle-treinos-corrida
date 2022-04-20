@@ -12,7 +12,7 @@ Usar pelo menos dois tipos de data-binding (Interpolation, Property Binding, Eve
 
 Passar dados via hierarquia de componentes, ou seja, usando @Input ou @Output.
 
-Mapear componentes à rotas no módulo de rotas
+Mapear componentes à rotas no módulo de rotas.
 
 Criar navegação entre páginas por meio de rotas.
 
