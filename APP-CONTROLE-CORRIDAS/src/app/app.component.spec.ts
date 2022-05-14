@@ -23,7 +23,7 @@ describe('AppComponent', () => {
   it(`should have as title 'APP-CONTROLE-CORRIDAS'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('APP-CONTROLE-CORRIDAS');
+    expect(app.titulo).toEqual('APP-CONTROLE-CORRIDAS');
   });
 
   it('should render title', () => {
