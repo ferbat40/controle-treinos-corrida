@@ -1,3 +1,4 @@
+import { ElementSchemaRegistry } from '@angular/compiler';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 import * as $ from 'jquery';
@@ -8,7 +9,7 @@ import * as M from 'materialize-css';
   styleUrls: ['./componente1.component.scss']
 })
 export class COMPONENTE1Component implements OnInit {
-  titulo="fer";
+  selecao="";
   @ViewChild('mobile') sideNav?: ElementRef;
   
   constructor() {  
@@ -21,16 +22,29 @@ export class COMPONENTE1Component implements OnInit {
   M.Sidenav.init($sideNav);
   }
  
+
   
 
-  adicionar() {
- 
-    const numero = Math.round(Math.random() * 100);
-    this.titulo = 'texto ' + numero;
+  selCorrida() {
+  this.selecao ="Inclusão de corridas Selecionada";
+    
+  return this.selecao;
   }
 
+  selSuplementos(){
+    this.selecao ="Suplementos Selecionado";
+    return this.selecao;
+  }
 
+  selMarcas(){
+    this.selecao ="Marcas Selecionada";
+    return this.selecao;
+  }
 
+  selSobre(){
+    this.selecao ="Sobre Selecionado";
+    return this.selecao;
+  }
 
 }
 
