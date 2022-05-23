@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { COMPONENTE1Component } from './componente1/componente1.component';
-import { COMPONENTE2Component } from './componente2/componente2.component';
 import { Componente3Component } from './componente3/componente3.component';
 import { InclusaoComponent } from './inclusao/inclusao.component';
 import { SuplementoComponent } from './suplemento/suplemento.component';
@@ -16,7 +15,6 @@ import { LoginComponent } from './login/login.component';
   declarations: [
     AppComponent,
     COMPONENTE1Component,
-    COMPONENTE2Component,
     Componente3Component,
     InclusaoComponent,
     SuplementoComponent,
