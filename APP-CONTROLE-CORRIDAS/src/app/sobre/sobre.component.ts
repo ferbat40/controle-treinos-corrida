@@ -6,10 +6,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sobre.component.scss']
 })
 export class SobreComponent implements OnInit {
-
+  modal = {
+    show: false,
+    titulo: '',
+    texto: '',
+  };
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  Evento(event: string) {
+    this.modal.show = true;
+    this.modal.titulo = 'Alerta!';
+    this.modal.texto = event;
+  }
+  onCloseModal() {
+    this.modal.show = false;
   }
 
 }

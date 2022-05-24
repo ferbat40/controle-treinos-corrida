@@ -1,1 +1,10 @@
-<p>marca works!</p>
+<app-modal [show]="modal.show" [content]="modal" (closeEvent)="onCloseModal()">
+</app-modal>
+
+<div>
+<app-acao
+    #acao
+    [tipo]="'Marca'"
+    (evento)="this.Evento($event)"
+  ></app-acao>
+</div>

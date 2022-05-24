@@ -10,6 +10,8 @@ import { SuplementoComponent } from './suplemento/suplemento.component';
 import { MarcaComponent } from './marca/marca.component';
 import { SobreComponent } from './sobre/sobre.component';
 import { LoginComponent } from './login/login.component';
+import { AcaoComponent } from './acao/acao.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { LoginComponent } from './login/login.component';
     SuplementoComponent,
     MarcaComponent,
     SobreComponent,
-    LoginComponent
+    LoginComponent,
+    AcaoComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
