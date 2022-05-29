@@ -4,21 +4,22 @@ export class Corrida {
   local ?: string;
   distancia?: string;
   dificuldade?: string;
-  dataCorrida: Date;
+  dataCorrida?: Date;
+  corridas: string;
   
-  
-  constructor(dataCorrida: Date) {
-    this.dataCorrida = dataCorrida;
+  constructor(corridas: string) {
+    this.corridas = corridas;
    
     
   }
 
   public static clone(corrida: Corrida) {
-    let u: Corrida = new Corrida(corrida.dataCorrida);
-    u.local = user.name;
-    u.cpf = user.cpf;
-    u.birthday = user.birthday;
-    u.balance = user.balance;
+    let u: Corrida = new Corrida(corrida.corridas);
+    u.local = corrida.local;
+    u.distancia = corrida.distancia;
+    u.dificuldade = corrida.dificuldade;
+    u.dataCorrida = corrida.dataCorrida;
+    u.corridas = corrida.corridas;
    
     return u;
   }

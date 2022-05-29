@@ -1,5 +1,5 @@
 import { Constants } from './constants';
-import { User } from '../model/corrida';
+import { Corrida } from '../model/corrida';
 
 export class Shared {
   constructor() {}
@@ -14,7 +14,7 @@ export class Shared {
     }
 
     //usuário definido na forma literal
-    let user = new User(Constants.USERNAME_KEY, 'qwerty', true);
+    let user = new Corrida(Constants.USERNAME_KEY);
 
     localStorage.setItem(Constants.USERNAME_KEY, JSON.stringify(user));
     localStorage.setItem(Constants.USERS_KEY, JSON.stringify([]));

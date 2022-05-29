@@ -1,51 +1,51 @@
 import { Constants } from 'src/app/util/constants';
 import { Injectable } from '@angular/core';
-import { User } from '../model/corrida';
+import { Corrida } from '../model/corrida';
 import { WebStorageUtil } from 'src/app/util/web-storage-util';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  users!: User[];
+  corrida!: Corrida[];
   constructor() {
-    this.users = WebStorageUtil.get(Constants.USERS_KEY);
+    this.corrida = WebStorageUtil.get(Constants.USERS_KEY);
   }
 
-  save(user: User) {
-    this.users = WebStorageUtil.get(Constants.USERS_KEY);
-    this.users.push(user);
-    WebStorageUtil.set(Constants.USERS_KEY, this.users);
+  save(user: Corrida) {
+    this.corrida = WebStorageUtil.get(Constants.USERS_KEY);
+    this.corrida.push(user);
+    WebStorageUtil.set(Constants.USERS_KEY, this.corrida);
   }
 
-  update(user: User) {
-    this.users = WebStorageUtil.get(Constants.USERS_KEY);
-    this.delete(user.username);
-    this.save(user);
+  update(corrida: Corrida) {
+    this.corrida = WebStorageUtil.get(Constants.USERS_KEY);
+    this.delete(corrida.corridas);
+    this.save(corrida);
   }
 
-  delete(username: string): boolean {
-    this.users = WebStorageUtil.get(Constants.USERS_KEY);
-    this.users = this.users.filter((u) => {
-      return u.username?.valueOf() != username?.valueOf();
+  delete(corridas: string): boolean {
+    this.corrida = WebStorageUtil.get(Constants.USERS_KEY);
+    this.corrida = this.corrida.filter((u) => {
+      return u.corridas?.valueOf() != corridas?.valueOf();
     });
 
-    WebStorageUtil.set(Constants.USERS_KEY, this.users);
+    WebStorageUtil.set(Constants.USERS_KEY, this.corrida);
     return true;
   }
 
   isExist(value: string): boolean {
-    this.users = WebStorageUtil.get(Constants.USERS_KEY);
-    for (let u of this.users) {
-      if (u.username?.valueOf() == value?.valueOf()) {
+    this.corrida = WebStorageUtil.get(Constants.USERS_KEY);
+    for (let u of this.corrida) {
+      if (u.corridas?.valueOf() == value?.valueOf()) {
         return true;
       }
     }
     return false;
   }
 
-  getUsers(): User[] {
-    this.users = WebStorageUtil.get(Constants.USERS_KEY);
-    return this.users;
+  getUsers(): Corrida[] {
+    this.corrida = WebStorageUtil.get(Constants.USERS_KEY);
+    return this.corrida;
   }
 }

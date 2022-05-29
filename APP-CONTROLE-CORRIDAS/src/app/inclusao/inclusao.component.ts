@@ -1,6 +1,6 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { User } from '../model/corrida';
+import { Corrida } from '../model/corrida';
 import { Shared } from './../util/shared';
 import { UserService } from './user.service';
 import { WebStorageUtil } from 'src/app/util/web-storage-util';
@@ -12,8 +12,8 @@ import { WebStorageUtil } from 'src/app/util/web-storage-util';
 })
 export class InclusaoComponent implements OnInit {
   @ViewChild('form') form!: NgForm;
-  user!: User;
-  users?: User[];
+  corrida!: Corrida;
+  corridas?: Corrida[];
 
   userRepassword: string = '';
 
@@ -26,18 +26,18 @@ export class InclusaoComponent implements OnInit {
 
   ngOnInit(): void {
     Shared.initializeWebStorage();
-    this.user = new User('', '');
-    this.users = this.userService.getUsers();
+    this.corrida = new Corrida('');
+    this.corridas = this.userService.getUsers();
   }
 
   onSubmit() {
     
     this.isSubmitted = true;
-     if (!this.userService.isExist(this.user.username)) {
-      this.userService.save(this.user);
+     if (!this.userService.isExist(this.corrida.corridas)) {
+      this.userService.save(this.corrida);
     
     } else {
-      this.userService.update(this.user);
+      this.userService.update(this.corrida);
    
     }
   
@@ -45,8 +45,8 @@ export class InclusaoComponent implements OnInit {
     this.isSuccess = true;
     this.message = 'Cadastro realizado com sucesso!';
     this.form.reset();
-    this.user = new User('', '');
-    this.users = this.userService.getUsers();
+    this.corrida = new Corrida('');
+    this.corridas= this.userService.getUsers();
     
   }
 
@@ -55,10 +55,10 @@ export class InclusaoComponent implements OnInit {
    * imediatamente na lista de usuários cadastrados sem pressionar o submit.
    * @param user
    */
-  onEdit(user: User) {
+  onEdit(corrida: Corrida) {
     //this.user = user;
-    let clone = User.clone(user);
-    this.user = clone;
+    let clone = Corrida.clone(corrida);
+    this.corrida= clone;
   }
 
   onDelete(username: string) {
@@ -76,7 +76,7 @@ export class InclusaoComponent implements OnInit {
     } else {
       this.message = 'Opps! O item não pode ser removido!';
     }
-    this.users = this.userService.getUsers();
+    this.corridas = this.userService.getUsers();
   }
   modal = {
     show: false,

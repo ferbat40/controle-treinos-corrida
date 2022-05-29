@@ -1,4 +1,4 @@
-import { User } from '../model/corrida';
+import { Corrida } from '../model/corrida';
 
 export class WebStorageUtil {
   static get(key: string): any {

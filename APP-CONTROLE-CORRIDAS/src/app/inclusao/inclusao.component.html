@@ -11,7 +11,7 @@
           name="input-name"
           type="text"
           class="validate"
-          [(ngModel)]="this.user.name"
+          [(ngModel)]="this.corrida.local"
           pattern="^(\s?[A-ZÀ-Ú][a-zà-ú]*)+(\s[a-zà-ú]*)?(\s[A-ZÀ-Ú][a-zà-ú]*)+"
           #name="ngModel"
           required
@@ -28,7 +28,7 @@
           name="input-username"
           type="text"
           class="validate"
-          [(ngModel)]="this.user.username"
+          [(ngModel)]="this.corrida.corridas"
           pattern="^[a-z]+([\.-]?[a-z]+)*"
           #username="ngModel"
           required
@@ -45,7 +45,7 @@
           name="input-password"
           type="password"
           class="validate"
-          [(ngModel)]="this.user.password"
+          [(ngModel)]="this.corrida.distancia"
           pattern="^[a-zA-Z0-9_@#\\&\\$]{6,18}$"
           #password="ngModel"
           required
@@ -82,7 +82,7 @@
           name="input-cpf"
           type="text"
           class="validate"
-          [(ngModel)]="this.user.cpf"
+          [(ngModel)]="this.corrida.dificuldade"
           pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
           mask="CPF_CNPJ"
           [dropSpecialCharacters]="false"
@@ -101,7 +101,7 @@
           name="input-birthday"
           type="date"
           class="validate"
-          [(ngModel)]="this.user.birthday"
+          [(ngModel)]="this.corrida.dataCorrida"
         />
         <label for="input-birthday">Data de Nascimento</label>
       </div>
@@ -119,7 +119,7 @@
 
   <h5>Usuários cadastrados</h5>
   <!-- Tabela de corridas -->
-  <table class="highlight" *ngIf="users && users!.length > 0">
+  <table class="highlight" *ngIf="corridas && corridas.length > 0">
     <thead>
       <tr>
         <th>Nome Completo</th>
@@ -131,11 +131,11 @@
     </thead>
 
     <tbody>
-      <tr *ngFor="let u of users">
-        <td>{{ u.name }}</td>
-        <td>{{ u.username }}</td>
-        <td>{{ u.cpf }}</td>
-        <td>{{ u.balance | currency: "BRL" }}</td>
+      <tr *ngFor="let u of corridas">
+        <td>{{ u.corridas }}</td>
+        <td>{{ u.dataCorrida }}</td>
+        <td>{{ u.dificuldade }}</td>
+        <td>{{ u.distancia}}</td>
         <td class="right">
           <a
             ><i class="material-icons my-icon-size" (click)="onEdit(u)"
@@ -145,7 +145,7 @@
           <a
             ><i
               class="material-icons my-icon-size"
-              (click)="onDelete(u.username)"
+              (click)="onDelete(u.corridas)"
               >delete</i
             ></a
           >
@@ -154,7 +154,7 @@
     </tbody>
   </table>
 
-  <div *ngIf="!users || users!.length == 0">
+  <div *ngIf="!corridas || corridas!.length == 0">
     <div class="row">
       <div class="center-align">
         <i class="col s12 material-icons large">mood_bad</i>
