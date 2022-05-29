@@ -1,6 +1,6 @@
 import { Constants } from 'src/app/util/constants';
 import { Injectable } from '@angular/core';
-import { User } from './../model/user';
+import { User } from '../model/corrida';
 import { WebStorageUtil } from 'src/app/util/web-storage-util';
 
 @Injectable({

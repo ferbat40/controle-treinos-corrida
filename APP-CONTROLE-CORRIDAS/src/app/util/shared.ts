@@ -1,5 +1,5 @@
 import { Constants } from './constants';
-import { User } from '../model/user';
+import { User } from '../model/corrida';
 
 export class Shared {
   constructor() {}

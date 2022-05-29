@@ -1,25 +1,21 @@
 
 
-export class User {
-  name?: string;
-  username: string;
-  password: string;
-  cpf?: string;
-  birthday?: Date;
-  balance: number;
-  isAdmin: boolean;
+export class Corrida {
+  local ?: string;
+  distancia?: string;
+  dificuldade?: string;
+  dataCorrida: Date;
   
-  constructor(username: string, password: string, isAdmin: boolean = false) {
-    this.username = username;
-    this.password = password;
-    this.balance = 0;
+  
+  constructor(dataCorrida: Date) {
+    this.dataCorrida = dataCorrida;
    
-    this.isAdmin = isAdmin;
+    
   }
 
-  public static clone(user: User) {
-    let u: User = new User(user.username, user.password, user.isAdmin);
-    u.name = user.name;
+  public static clone(corrida: Corrida) {
+    let u: Corrida = new Corrida(corrida.dataCorrida);
+    u.local = user.name;
     u.cpf = user.cpf;
     u.birthday = user.birthday;
     u.balance = user.balance;

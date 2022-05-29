@@ -1,6 +1,6 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { User } from './../model/user';
+import { User } from '../model/corrida';
 import { Shared } from './../util/shared';
 import { UserService } from './user.service';
 import { WebStorageUtil } from 'src/app/util/web-storage-util';
