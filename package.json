@@ -2,10 +2,10 @@
   "dependencies": {
     "i": "^0.3.7",
     "material-icons": "^1.10.11",
-    "materialize-css": "^1.0.0"
+    "materialize-css": "^1.0.0",
+    "ngx-mask": "^13.1.14"
   },
   "devDependencies": {
     "@types/materialize-css": "^1.0.11"
   }
 }
-
