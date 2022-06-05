@@ -6,36 +6,36 @@ import { WebStorageUtil } from 'src/app/util/web-storage-util';
 @Injectable({
   providedIn: 'root',
 })
-export class UserService {
+export class CorridaService {
   corrida!: Corrida[];
   constructor() {
-    this.corrida = WebStorageUtil.get(Constants.USERS_KEY);
+    this.corrida = WebStorageUtil.get(Constants.corridas);
   }
 
   save(user: Corrida) {
-    this.corrida = WebStorageUtil.get(Constants.USERS_KEY);
+    this.corrida = WebStorageUtil.get(Constants.corridas);
     this.corrida.push(user);
-    WebStorageUtil.set(Constants.USERS_KEY, this.corrida);
+    WebStorageUtil.set(Constants.corridas, this.corrida);
   }
 
   update(corrida: Corrida) {
-    this.corrida = WebStorageUtil.get(Constants.USERS_KEY);
+    this.corrida = WebStorageUtil.get(Constants.corridas);
     this.delete(corrida.corridas);
     this.save(corrida);
   }
 
   delete(corridas: string): boolean {
-    this.corrida = WebStorageUtil.get(Constants.USERS_KEY);
+    this.corrida = WebStorageUtil.get(Constants.corridas);
     this.corrida = this.corrida.filter((u) => {
       return u.corridas?.valueOf() != corridas?.valueOf();
     });
 
-    WebStorageUtil.set(Constants.USERS_KEY, this.corrida);
+    WebStorageUtil.set(Constants.corridas, this.corrida);
     return true;
   }
 
   isExist(value: string): boolean {
-    this.corrida = WebStorageUtil.get(Constants.USERS_KEY);
+    this.corrida = WebStorageUtil.get(Constants.corridas);
     for (let u of this.corrida) {
       if (u.corridas?.valueOf() == value?.valueOf()) {
         return true;
@@ -45,7 +45,7 @@ export class UserService {
   }
 
   getUsers(): Corrida[] {
-    this.corrida = WebStorageUtil.get(Constants.USERS_KEY);
+    this.corrida = WebStorageUtil.get(Constants.corridas);
     return this.corrida;
   }
 }

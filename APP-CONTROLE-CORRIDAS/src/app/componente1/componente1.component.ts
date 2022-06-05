@@ -10,6 +10,8 @@ import * as M from 'materialize-css';
 })
 export class COMPONENTE1Component implements OnInit {
   selecao="";
+  imgURL = 'https://lab.asics.com.br/static/7ca0093b65c722bc1b7cd5bb8f5fbfc2/06804/YtNe4sYUBHD9LTjzkAxF.webp';
+
   @ViewChild('mobile') sideNav?: ElementRef;
   
   constructor() {  

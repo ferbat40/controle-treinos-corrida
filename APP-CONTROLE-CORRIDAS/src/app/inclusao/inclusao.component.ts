@@ -2,7 +2,7 @@ import { Component, OnInit,ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Corrida } from '../model/corrida';
 import { Shared } from './../util/shared';
-import { UserService } from './user.service';
+import { CorridaService } from './corrida.service';
 import { WebStorageUtil } from 'src/app/util/web-storage-util';
 
 @Component({
@@ -15,29 +15,29 @@ export class InclusaoComponent implements OnInit {
   corrida!: Corrida;
   corridas?: Corrida[];
 
-  userRepassword: string = '';
+  
 
   isSubmitted!: boolean;
   isShowMessage: boolean = false;
   isSuccess!: boolean;
   message!: string;
 
-  constructor(private userService: UserService) {}
+  constructor(private corridaService: CorridaService) {}
 
   ngOnInit(): void {
     Shared.initializeWebStorage();
     this.corrida = new Corrida('');
-    this.corridas = this.userService.getUsers();
+    this.corridas = this.corridaService.getUsers();
   }
 
   onSubmit() {
     
     this.isSubmitted = true;
-     if (!this.userService.isExist(this.corrida.corridas)) {
-      this.userService.save(this.corrida);
+     if (!this.corridaService.isExist(this.corrida.corridas)) {
+      this.corridaService.save(this.corrida);
     
     } else {
-      this.userService.update(this.corrida);
+      this.corridaService.update(this.corrida);
    
     }
   
@@ -46,37 +46,32 @@ export class InclusaoComponent implements OnInit {
     this.message = 'Cadastro realizado com sucesso!';
     this.form.reset();
     this.corrida = new Corrida('');
-    this.corridas= this.userService.getUsers();
+    this.corridas= this.corridaService.getUsers();
     
   }
 
-  /**
-   * Realiza o clone do objeto, justamente para não refletir as mudanças
-   * imediatamente na lista de usuários cadastrados sem pressionar o submit.
-   * @param user
-   */
+ 
   onEdit(corrida: Corrida) {
-    //this.user = user;
     let clone = Corrida.clone(corrida);
     this.corrida= clone;
   }
 
   onDelete(username: string) {
     let confirmation = window.confirm(
-      'Você tem certeza que deseja remover ' + username
+      'Deseja remover ' + username
     );
     if (!confirmation) {
       return;
     }
-    let response: boolean = this.userService.delete(username);
+    let response: boolean = this.corridaService.delete(username);
     this.isShowMessage = true;
     this.isSuccess = response;
     if (response) {
       this.message = 'O item foi removido com sucesso!';
     } else {
-      this.message = 'Opps! O item não pode ser removido!';
+      this.message = 'Esse item não pode ser removido!';
     }
-    this.corridas = this.userService.getUsers();
+    this.corridas = this.corridaService.getUsers();
   }
   modal = {
     show: false,

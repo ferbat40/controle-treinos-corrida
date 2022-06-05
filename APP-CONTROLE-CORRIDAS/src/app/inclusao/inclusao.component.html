@@ -7,105 +7,87 @@
     <form class="col s12" #form="ngForm" (submit)="onSubmit()">
       <div class="input-field col s12">
         <input
-          id="input-name"
-          name="input-name"
+          id="input-local"
+          name="input-local"
           type="text"
           class="validate"
           [(ngModel)]="this.corrida.local"
           pattern="^(\s?[A-ZÀ-Ú][a-zà-ú]*)+(\s[a-zà-ú]*)?(\s[A-ZÀ-Ú][a-zà-ú]*)+"
-          #name="ngModel"
+          #local="ngModel"
           required
         />
-        <label for="input-name">Nome Completo *</label>
-        <div class="red-text" [hidden]="name.valid || name.untouched">
-          Por favor, informe o seu nome completo.
+        <label for="input-local">Local *</label>
+        <div class="red-text" [hidden]="local.valid || local.untouched">
+          informe o local da corrida com pelo menos duas palavras, com a primeira letra de cada palavra em maiúscula  
         </div>
       </div>
 
       <div class="input-field col s12">
         <input
-          id="input-username"
-          name="input-username"
+          id="input-nmcorridas"
+          name="input-nmcorridas"
           type="text"
           class="validate"
           [(ngModel)]="this.corrida.corridas"
-          pattern="^[a-z]+([\.-]?[a-z]+)*"
-          #username="ngModel"
+          pattern="^[a-z]+([\.-]?[a-z]+[0-9])*"
+          #nmcorridas="ngModel"
           required
         />
-        <label for="input-username">Nome de Usuário *</label>
-        <div class="red-text" [hidden]="username.valid || username.untouched">
-          Por favor, informe o seu username em letras minúsculas e sem espaços.
+        <label for="input-nmcorridas">Corrida *</label>
+        <div class="red-text" [hidden]="nmcorridas.valid || nmcorridas.untouched">
+          Informe descrição da corrida em minusculo sem espaço e o numero da corrida.
         </div>
       </div>
 
-      <div class="input-field col s12 l6">
+    
+      
+     
+      <div class="input-field col s12">
         <input
-          id="input-password"
-          name="input-password"
-          type="password"
-          class="validate"
-          [(ngModel)]="this.corrida.distancia"
-          pattern="^[a-zA-Z0-9_@#\\&\\$]{6,18}$"
-          #password="ngModel"
-          required
-        />
-        <label for="input-password">Senha *</label>
-        <div class="red-text" [hidden]="password.valid || password.untouched">
-          Por favor, nos informe a sua senha com pelo menos 6 caracteres!
-        </div>
-      </div>
-
-      <div class="input-field col s12 l6">
-        <input
-          id="input-user-repassword"
-          name="input-user-repassword"
-          type="password"
-          class="validate"
-          [(ngModel)]="this.userRepassword"
-          #repassword="ngModel"
-          pattern="{{ password.value }}"
-          required
-        />
-        <label for="input-user-repassword">Repita a senha *</label>
-        <div
-          class="red-text"
-          [hidden]="repassword.valid || repassword.untouched"
-        >
-          Por favor, repita a sua senha.
-        </div>
-      </div>
-
-      <div class="input-field col s12 l6">
-        <input
-          id="input-cpf"
-          name="input-cpf"
+          id="input-dificuldade"
+          name="input-dificuldade"
           type="text"
           class="validate"
           [(ngModel)]="this.corrida.dificuldade"
-          pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
-          mask="CPF_CNPJ"
-          [dropSpecialCharacters]="false"
-          #cpf="ngModel"
+          pattern="^[a-z]+([\.-]?[a-z]+)*"
+          #dificuldade="ngModel"
           required
         />
-        <label for="input-cpf">CPF *</label>
-        <div class="red-text" [hidden]="cpf.valid || cpf.untouched">
-          Por favor, informe o seu CPF.
+        <label for="input-dificuldade">Dificuldade *</label>
+        <div class="red-text" [hidden]="dificuldade.valid || dificuldade.untouched">
+          Informe a Didificuldade da corrida em letras minusculas
         </div>
       </div>
 
+      <div class="input-field col s12">
+        <input
+          id="input-distancia"
+          name="input-distancia"
+          type="text"
+          class="validate"
+          [(ngModel)]="this.corrida.distancia"
+          pattern="^([0-5]{1}\d{1})$|^(\d{1})$"
+          #distancia="ngModel"
+          required
+        />
+        <label for="input-distancia">Distância *</label>
+        <div class="red-text" [hidden]="distancia.valid || distancia.untouched">
+          informe a distancia em numeros.
+        </div>
+      </div>
+
+      
       <div class="input-field col s12 l6">
         <input
-          id="input-birthday"
-          name="input-birthday"
+          id="input-datacorrida"
+          name="input-datacorrida"
           type="date"
           class="validate"
           [(ngModel)]="this.corrida.dataCorrida"
         />
-        <label for="input-birthday">Data de Nascimento</label>
+        <label for="input-datacorrida">Data da Corrida</label>
       </div>
-
+<div>
       <button
         class="btn waves-effect waves-light amber darken-4"
         type="submit"
@@ -114,28 +96,31 @@
         Enviar
         <i class="material-icons right">send</i>
       </button>
+</div>
     </form>
   </div>
 
-  <h5>Usuários cadastrados</h5>
+  <h5 *ngIf="corridas && corridas.length > 0">Cadastradas</h5>
   <!-- Tabela de corridas -->
   <table class="highlight" *ngIf="corridas && corridas.length > 0">
     <thead>
       <tr>
-        <th>Nome Completo</th>
-        <th>Nome de usuário</th>
-        <th>CPF</th>
-        <th>Saldo</th>
-        <th></th>
+        <th>Local</th>
+        <th>Corrida</th>
+        <th>Dificuldade</th>
+        <th>Distancia KM</th>
+        <th>Data</th>
+        
       </tr>
     </thead>
 
     <tbody>
       <tr *ngFor="let u of corridas">
+        <td>{{ u.local }}</td>
         <td>{{ u.corridas }}</td>
-        <td>{{ u.dataCorrida }}</td>
         <td>{{ u.dificuldade }}</td>
         <td>{{ u.distancia}}</td>
+        <td>{{ u.dataCorrida }}</td>
         <td class="right">
           <a
             ><i class="material-icons my-icon-size" (click)="onEdit(u)"
@@ -157,9 +142,9 @@
   <div *ngIf="!corridas || corridas!.length == 0">
     <div class="row">
       <div class="center-align">
-        <i class="col s12 material-icons large">mood_bad</i>
+        
         <span class="col s12 flow-text"
-          >Ainda não temos usuários cadastrados!</span
+          >Nenhuma corrida adicionada!</span
         >
       </div>
     </div>
