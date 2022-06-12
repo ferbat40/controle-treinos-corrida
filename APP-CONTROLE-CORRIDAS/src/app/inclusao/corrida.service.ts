@@ -2,13 +2,15 @@ import { Constants } from 'src/app/util/constants';
 import { Injectable } from '@angular/core';
 import { Corrida } from '../model/corrida';
 import { WebStorageUtil } from 'src/app/util/web-storage-util';
+import {RacePromiseService} from '../service/race-promise.service'
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class CorridaService {
   corrida!: Corrida[];
-  constructor() {
+  constructor(private racePromiseService: RacePromiseService) {
     this.corrida = WebStorageUtil.get(Constants.corridas);
   }
 
@@ -16,6 +18,11 @@ export class CorridaService {
     this.corrida = WebStorageUtil.get(Constants.corridas);
     this.corrida.push(user);
     WebStorageUtil.set(Constants.corridas, this.corrida);
+    let p1= this.racePromiseService.saveRace(user);
+    var p = Promise.resolve([p1]);
+    p.then(function(v){
+      console.log("po "+v[0]);
+    });
   }
 
   update(corrida: Corrida) {

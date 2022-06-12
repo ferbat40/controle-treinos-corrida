@@ -1,0 +1,60 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some commentss",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "corridas": [
+    {
+      "id": 1,
+      "corridas": "corrida4",
+      "local": "Ubatuba Parue",
+      "dificuldade": "dificil",
+      "distancia": "56",
+      "dataCorrida": "1975-11-03"
+    },
+    {
+      "corridas": "corrida6",
+      "local": "Santa Gertudes",
+      "distancia": "45",
+      "dificuldade": "dificil",
+      "dataCorrida": "1987-09-08",
+      "id": 2
+    },
+    {
+      "corridas": "corrida1",
+      "local": "Vila Rezende",
+      "distancia": "10",
+      "dificuldade": "dificil",
+      "id": 3
+    },
+    {
+      "corridas": "corrida7",
+      "local": "Vila Rezende",
+      "distancia": "5",
+      "dificuldade": "facil",
+      "dataCorrida": "2022-04-02",
+      "id": 4
+    },
+    {
+      "corridas": "corrida4",
+      "local": "Ubatuba Parue",
+      "distancia": "56",
+      "dificuldade": "dificil",
+      "dataCorrida": "1975-11-03",
+      "id": 5
+    }
+  ]
+}

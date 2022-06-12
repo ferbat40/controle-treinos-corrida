@@ -5,6 +5,15 @@
     "materialize-css": "^1.0.0",
     "ngx-mask": "^13.1.14"
   },
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "json:server": "json-server --watch db.json",
+    "json:server:routes": "json-server --watch db.json --routes routes.json"
+  },
   "devDependencies": {
     "@types/materialize-css": "^1.0.11"
   }

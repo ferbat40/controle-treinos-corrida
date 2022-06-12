@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Injectable } from '@angular/core';
+
 import { Corrida } from '../model/corrida';
 
 @Injectable({
@@ -21,8 +22,8 @@ export class RacePromiseService {
   }
 
   saveRace(corrida: Corrida): Promise<Corrida> {
-    return this.httpClient
-      .post<Corrida>(this.URL, JSON.stringify(corrida), this.httpOptions)
+     return this.httpClient
+      .post<Corrida>(this.URL_PT, JSON.stringify(corrida), this.httpOptions)
       .toPromise();
   }
 

@@ -13,7 +13,7 @@ import { AcaoComponent } from './acao/acao.component';
 import { ModalComponent } from './modal/modal.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser'
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,6 +33,7 @@ import { BrowserModule } from '@angular/platform-browser'
     BrowserModule,
     AppRoutingModule,
     NgxMaskModule.forRoot(),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

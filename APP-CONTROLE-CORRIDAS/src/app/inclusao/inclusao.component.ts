@@ -5,6 +5,7 @@ import { Shared } from './../util/shared';
 import { CorridaService } from './corrida.service';
 import { WebStorageUtil } from 'src/app/util/web-storage-util';
 
+
 @Component({
   selector: 'app-inclusao',
   templateUrl: './inclusao.component.html',
@@ -35,6 +36,7 @@ export class InclusaoComponent implements OnInit {
     this.isSubmitted = true;
      if (!this.corridaService.isExist(this.corrida.corridas)) {
       this.corridaService.save(this.corrida);
+      
     
     } else {
       this.corridaService.update(this.corrida);

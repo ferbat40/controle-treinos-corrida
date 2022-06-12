@@ -1,6 +1,7 @@
 
 
 export class Corrida {
+  id ?: number;
   local ?: string;
   distancia?: string;
   dificuldade?: string;
