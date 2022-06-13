@@ -1,7 +1,7 @@
 
 
 export class Corrida {
-  id ?: number;
+  id : number =  Math.floor(Math.random()*1000);
   local ?: string;
   distancia?: string;
   dificuldade?: string;
@@ -10,7 +10,7 @@ export class Corrida {
   
   constructor(corridas: string) {
     this.corridas = corridas;
-   
+    
     
   }
 
@@ -21,7 +21,7 @@ export class Corrida {
     u.dificuldade = corrida.dificuldade;
     u.dataCorrida = corrida.dataCorrida;
     u.corridas = corrida.corridas;
-   
+    u.id=corrida.id;
     return u;
   }
 }

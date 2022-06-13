@@ -35,12 +35,15 @@ export class InclusaoComponent implements OnInit {
     
     this.isSubmitted = true;
      if (!this.corridaService.isExist(this.corrida.corridas)) {
+      this.corridaService.saveJson(this.corrida);
       this.corridaService.save(this.corrida);
+      
       
     
     } else {
+      this.corridaService.updateJson(this.corrida);
       this.corridaService.update(this.corrida);
-   
+     
     }
   
     this.isShowMessage = true;
@@ -58,14 +61,16 @@ export class InclusaoComponent implements OnInit {
     this.corrida= clone;
   }
 
-  onDelete(username: string) {
+  onDelete(username: string,corrida: Corrida) {
     let confirmation = window.confirm(
       'Deseja remover ' + username
     );
     if (!confirmation) {
       return;
     }
+    this.corridaService.deleteJson(corrida);
     let response: boolean = this.corridaService.delete(username);
+   
     this.isShowMessage = true;
     this.isSuccess = response;
     if (response) {
