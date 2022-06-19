@@ -11,7 +11,7 @@
           name="input-local"
           type="text"
           class="validate"
-          [(ngModel)]="this.corrida.corridas"
+          [(ngModel)]="this.corrida.descricao"
           pattern="^(\s?[A-ZÀ-Ú][a-zà-ú]*)+(\s[a-zà-ú]*)?(\s[A-ZÀ-Ú][a-zà-ú]*)+"
           #local="ngModel"
           required
@@ -41,22 +41,16 @@
   <table class="highlight" *ngIf="corridas && corridas.length > 0">
     <thead>
       <tr>
-        <th>Local</th>
-        <th>Corrida</th>
-        <th>Dificuldade</th>
-        <th>Distancia KM</th>
-        <th>Data</th>
+        <th>Descricao</th>
+        
         
       </tr>
     </thead>
 
     <tbody>
       <tr *ngFor="let u of corridas">
-        <td>{{ u.local }}</td>
-        <td>{{ u.corridas }}</td>
-        <td>{{ u.dificuldade }}</td>
-        <td>{{ u.distancia}}</td>
-        <td>{{ u.dataCorrida }}</td>
+        <td>{{ u.descricao }}</td>
+        
         <td class="right">
           <a
             ><i class="material-icons my-icon-size" (click)="onEdit(u)"
@@ -66,7 +60,7 @@
           <a
             ><i
               class="material-icons my-icon-size"
-              (click)="onDelete(u.corridas,u)"
+              (click)="onDelete(u.descricao,u)"
               >delete</i
             ></a
           >

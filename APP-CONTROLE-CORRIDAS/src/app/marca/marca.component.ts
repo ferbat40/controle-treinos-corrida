@@ -32,7 +32,7 @@ export class MarcaComponent implements OnInit {
   onSubmit() {
     
     this.isSubmitted = true;
-     if (!this.marcaService.isExist(this.corrida.corridas)) {
+     if (!this.marcaService.isExist(this.corrida.descricao)) {
       this.marcaService.saveJson(this.corrida);
       this.marcaService.save(this.corrida);
       

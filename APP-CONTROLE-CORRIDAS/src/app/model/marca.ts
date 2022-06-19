@@ -2,25 +2,17 @@
 
 export class Marca {
   id : number =  Math.floor(Math.random()*1000);
-  local ?: string;
-  distancia?: string;
-  dificuldade?: string;
-  dataCorrida?: Date;
-  corridas: string;
+  descricao: string;
   
-  constructor(corridas: string) {
-    this.corridas = corridas;
+  constructor(descricao: string) {
+    this.descricao = descricao;
     
     
   }
 
   public static clone(corrida: Marca) {
-    let u: Marca = new Marca(corrida.corridas);
-    u.local = corrida.local;
-    u.distancia = corrida.distancia;
-    u.dificuldade = corrida.dificuldade;
-    u.dataCorrida = corrida.dataCorrida;
-    u.corridas = corrida.corridas;
+    let u: Marca = new Marca(corrida.descricao);
+    u.descricao = corrida.descricao;
     u.id=corrida.id;
     return u;
   }
