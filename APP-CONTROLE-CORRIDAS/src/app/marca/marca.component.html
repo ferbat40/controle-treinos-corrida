@@ -1,3 +1,92 @@
+<div class="container contact">
+  <h5>Cadastro de Corridas</h5>
+  <h6>Dados da Corrida</h6>
+  <hr />
+  <div class="row">
+   
+    <form class="col s12" #form="ngForm" (submit)="onSubmit()">
+      <div class="input-field col s12">
+        <input
+          id="input-local"
+          name="input-local"
+          type="text"
+          class="validate"
+          [(ngModel)]="this.corrida.corridas"
+          pattern="^(\s?[A-ZÀ-Ú][a-zà-ú]*)+(\s[a-zà-ú]*)?(\s[A-ZÀ-Ú][a-zà-ú]*)+"
+          #local="ngModel"
+          required
+        />
+        <label for="input-local">Local *</label>
+        <div class="red-text" [hidden]="local.valid || local.untouched">
+          informe o local da corrida com pelo menos duas palavras, com a primeira letra de cada palavra em maiúscula  
+        </div>
+      </div>
+
+
+<div>
+      <button
+        class="btn waves-effect waves-light amber darken-4"
+        type="submit"
+        [disabled]="!form.valid"
+      >
+        Enviar
+        <i class="material-icons right">send</i>
+      </button>
+</div>
+    </form>
+  </div>
+
+  <h5 *ngIf="corridas && corridas.length > 0">Cadastradas</h5>
+  <!-- Tabela de corridas -->
+  <table class="highlight" *ngIf="corridas && corridas.length > 0">
+    <thead>
+      <tr>
+        <th>Local</th>
+        <th>Corrida</th>
+        <th>Dificuldade</th>
+        <th>Distancia KM</th>
+        <th>Data</th>
+        
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let u of corridas">
+        <td>{{ u.local }}</td>
+        <td>{{ u.corridas }}</td>
+        <td>{{ u.dificuldade }}</td>
+        <td>{{ u.distancia}}</td>
+        <td>{{ u.dataCorrida }}</td>
+        <td class="right">
+          <a
+            ><i class="material-icons my-icon-size" (click)="onEdit(u)"
+              >edit</i
+            ></a
+          >
+          <a
+            ><i
+              class="material-icons my-icon-size"
+              (click)="onDelete(u.corridas,u)"
+              >delete</i
+            ></a
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!corridas || corridas!.length == 0">
+    <div class="row">
+      <div class="center-align">
+        
+        <span class="col s12 flow-text"
+          >Nenhuma corrida adicionada!</span
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
 <app-modal [show]="modal.show" [content]="modal" (closeEvent)="onCloseModal()">
 </app-modal>
 
