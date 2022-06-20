@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { IConfig, NgxMaskModule } from 'ngx-mask';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './util/app-routing.module';
 import { AppComponent } from './app.component';
 import { COMPONENTE1Component } from './componente1/componente1.component';
 import { Componente3Component } from './componente3/componente3.component';

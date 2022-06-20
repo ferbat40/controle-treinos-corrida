@@ -1,22 +1,19 @@
-import { ConstantsMarca } from './constantsmarca';
+import { Constants } from './constants';
 import { Marca } from '../model/marca';
 
 export class SharedMarca {
   constructor() {}
 
-  /**
-	Cadastra um usuário default para funcionamento do login.
-	Só realiza o cadastro caso o usuário ainda não esteja salvo no WebStorage.
-*/
+  
   public static initializeWebStorage(): void {
-    if (localStorage.getItem(ConstantsMarca.corrida) != null) {
+    if (localStorage.getItem(Constants.corridasx) != null) {
       return;
     }
 
     //usuário definido na forma literal
-    let user = new Marca(ConstantsMarca.corrida);
+    let user = new Marca(Constants.corridasx);
 
-    localStorage.setItem(ConstantsMarca.corrida, JSON.stringify(user));
+    localStorage.setItem(Constants.corridasx, JSON.stringify(user));
     
   }
 }

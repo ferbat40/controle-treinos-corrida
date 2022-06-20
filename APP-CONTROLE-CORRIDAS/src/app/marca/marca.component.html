@@ -1,6 +1,6 @@
 <div class="container contact">
-  <h5>Cadastro de Corridas</h5>
-  <h6>Dados da Corrida</h6>
+  <h5>Cadastro de Marcas</h5>
+  <h6>Dados da Marca</h6>
   <hr />
   <div class="row">
    
@@ -11,14 +11,31 @@
           name="input-local"
           type="text"
           class="validate"
-          [(ngModel)]="this.corrida.descricao"
+          [(ngModel)]="this.marca.descricao"
           pattern="^(\s?[A-ZÀ-Ú][a-zà-ú]*)+(\s[a-zà-ú]*)?(\s[A-ZÀ-Ú][a-zà-ú]*)+"
           #local="ngModel"
           required
         />
-        <label for="input-local">Local *</label>
+        <label for="input-local">Suplemento *</label>
         <div class="red-text" [hidden]="local.valid || local.untouched">
-          informe o local da corrida com pelo menos duas palavras, com a primeira letra de cada palavra em maiúscula  
+          informe a descricao do suplemento com pelo menos duas palavras, com a primeira letra de cada palavra em maiúscula  
+        </div>
+      </div>
+
+      <div class="input-field col s12">
+        <input
+          id="input-nmcorridas"
+          name="input-nmcorridas"
+          type="text"
+          class="validate"
+          [(ngModel)]="this.marca.suplemento"
+          pattern="^(\s?[A-ZÀ-Ú][a-zà-ú]*)+(\s[a-zà-ú]*)?(\s[A-ZÀ-Ú][a-zà-ú]*)+"
+          #nmcorridas="ngModel"
+          required
+        />
+        <label for="input-nmcorridas">ID Suplemento *</label>
+        <div class="red-text" [hidden]="nmcorridas.valid || nmcorridas.untouched">
+          Informe o ID da marca do suplemento com numeros.
         </div>
       </div>
 
@@ -36,20 +53,23 @@
     </form>
   </div>
 
-  <h5 *ngIf="corridas && corridas.length > 0">Cadastradas</h5>
-  <!-- Tabela de corridas -->
-  <table class="highlight" *ngIf="corridas && corridas.length > 0">
+  <h5 *ngIf="marcas && marcas.length > 0">Cadastradas</h5>
+  <!-- Tabela de marcas -->
+  <table class="highlight" *ngIf="marcas && marcas.length > 0">
     <thead>
       <tr>
-        <th>Descricao</th>
-        
-        
+        <th>Codigo</th>
+        <th>Marca</th>
+        <th>Suplemento</th>
+         
       </tr>
     </thead>
 
     <tbody>
-      <tr *ngFor="let u of corridas">
+      <tr *ngFor="let u of marcas">
+        <td>{{ u.id }}</td>
         <td>{{ u.descricao }}</td>
+        <td>{{ u.suplemento }}</td>
         
         <td class="right">
           <a
@@ -69,12 +89,12 @@
     </tbody>
   </table>
 
-  <div *ngIf="!corridas || corridas!.length == 0">
+  <div *ngIf="!marcas || marcas!.length == 0">
     <div class="row">
       <div class="center-align">
         
         <span class="col s12 flow-text"
-          >Nenhuma corrida adicionada!</span
+          >Nenhuma marca adicionada!</span
         >
       </div>
     </div>

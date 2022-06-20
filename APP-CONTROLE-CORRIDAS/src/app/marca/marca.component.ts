@@ -11,8 +11,8 @@ import { SharedMarca } from './../util/sharedmarca';
 })
 export class MarcaComponent implements OnInit {
   @ViewChild('form') form!: NgForm;
-  corrida!: Marca;
-  corridas?: Marca[];
+  marca!: Marca;
+  marcas?: Marca[];
 
   
 
@@ -25,22 +25,22 @@ export class MarcaComponent implements OnInit {
 
   ngOnInit(): void {
     SharedMarca.initializeWebStorage();
-    this.corrida = new Marca('');
-    this.corridas = this.marcaService.getUsers();
+    this.marca = new Marca('');
+    this.marcas = this.marcaService.getUsers();
   }
 
   onSubmit() {
     
     this.isSubmitted = true;
-     if (!this.marcaService.isExist(this.corrida.descricao)) {
-      this.marcaService.saveJson(this.corrida);
-      this.marcaService.save(this.corrida);
+     if (!this.marcaService.isExist(this.marca.descricao)) {
+      this.marcaService.saveJson(this.marca);
+      this.marcaService.save(this.marca);
       
       
     
     } else {
-      this.marcaService.updateJson(this.corrida);
-      this.marcaService.update(this.corrida);
+      this.marcaService.updateJson(this.marca);
+      this.marcaService.update(this.marca);
      
     }
   
@@ -48,15 +48,15 @@ export class MarcaComponent implements OnInit {
     this.isSuccess = true;
     this.message = 'Cadastro realizado com sucesso!';
     this.form.reset();
-    this.corrida = new Marca('');
-    this.corridas= this.marcaService.getUsers();
+    this.marca = new Marca('');
+    this.marcas= this.marcaService.getUsers();
     
   }
 
  
   onEdit(corrida: Marca) {
     let clone = Marca.clone(corrida);
-    this.corrida= clone;
+    this.marca= clone;
   }
 
   onDelete(username: string,corrida: Marca) {
@@ -76,7 +76,7 @@ export class MarcaComponent implements OnInit {
     } else {
       this.message = 'Esse item não pode ser removido!';
     }
-    this.corridas = this.marcaService.getUsers();
+    this.marcas = this.marcaService.getUsers();
   }
   modal = {
     show: false,

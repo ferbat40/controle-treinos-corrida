@@ -24,5 +24,36 @@
       "dificuldade": "facilnada",
       "dataCorrida": "2022-06-11"
     }
+  ],
+  "marcas": [
+    {
+      "id": 490,
+      "descricao": "C C",
+      "suplemento": "D D"
+    },
+    {
+      "id": "A A",
+      "descricao": "F F"
+    },
+    {
+      "id": 108,
+      "descricao": "A B",
+      "suplemento": "C D"
+    },
+    {
+      "id": 863,
+      "descricao": "H H",
+      "suplemento": "N Nada"
+    },
+    {
+      "id": 781,
+      "descricao": "Q Q",
+      "suplemento": "W Wddd"
+    },
+    {
+      "id": 331,
+      "descricao": "O O",
+      "suplemento": "I I"
+    }
   ]
 }
