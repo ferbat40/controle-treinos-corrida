@@ -17,7 +17,12 @@ export class CorridaService {
 
   save(corrida: Corrida) {
     this.corrida = WebStorageUtil.get(Constants.corridas);
+    if (this.corrida===null || this.corrida.length===undefined){
+      this.corrida = []
+      this.corrida.push(corrida);
+    }else{
     this.corrida.push(corrida);
+    }
     WebStorageUtil.set(Constants.corridas, this.corrida);
    
   }
@@ -82,11 +87,15 @@ updateJson(corrida: Corrida){
 
   isExist(value: string): boolean {
     this.corrida = WebStorageUtil.get(Constants.corridas);
+    if (this.corrida===null || this.corrida.length===undefined){
+      return false;
+    }else{
     for (let u of this.corrida) {
       if (u.corridas?.valueOf() == value?.valueOf()) {
         return true;
       }
     }
+  }
     return false;
   }
 

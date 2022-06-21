@@ -28,7 +28,7 @@
           name="input-nmcorridas"
           type="text"
           class="validate"
-          [(ngModel)]="this.marca.suplemento"
+          [(ngModel)]="this.marca.descsuplemento"
           pattern="^(\s?[A-ZÀ-Ú][a-zà-ú]*)+(\s[a-zà-ú]*)?(\s[A-ZÀ-Ú][a-zà-ú]*)+"
           #nmcorridas="ngModel"
           required
@@ -69,7 +69,7 @@
       <tr *ngFor="let u of marcas">
         <td>{{ u.id }}</td>
         <td>{{ u.descricao }}</td>
-        <td>{{ u.suplemento }}</td>
+        <td>{{ u.descsuplemento }}</td>
         
         <td class="right">
           <a

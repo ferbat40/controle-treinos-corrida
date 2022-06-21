@@ -17,7 +17,12 @@ export class MarcaService {
 
   save(corrida: Marca) {
     this.marca = WebStorageUtil.get(Constants.corridasx);
+    if (this.marca===null || this.marca.length===undefined){
+      this.marca = []
+      this.marca.push(corrida);
+    }else{
     this.marca.push(corrida);
+    }
     WebStorageUtil.set(Constants.corridasx, this.marca);
    
   }
@@ -78,6 +83,9 @@ updateJson(corrida: Marca){
 
   isExist(value: string): boolean {
     this.marca = WebStorageUtil.get(Constants.corridasx);
+    if (this.marca===null || this.marca.length===undefined){
+      return false;
+    }
     for (let u of this.marca) {
       if (u.descricao?.valueOf() == value?.valueOf()) {
         return true;

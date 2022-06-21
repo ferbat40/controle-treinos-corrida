@@ -12,13 +12,18 @@ import {RacePromiseService} from '../service/race-promise.service'
 export class SuplementoService {
   suplemento!: Suplemento[];
   constructor(private racePromiseService: RacePromiseService) {
-    this.suplemento = WebStorageUtil.get(Constants.corrid);
+    this.suplemento = WebStorageUtil.get(Constants.corridsupl);
   }
 
   save(corrida: Suplemento) {
-    this.suplemento = WebStorageUtil.get(Constants.corrid);
+    this.suplemento = WebStorageUtil.get(Constants.corridsupl);
+    if (this.suplemento===null || this.suplemento.length===undefined){
+      this.suplemento = []
+      this.suplemento.push(corrida);
+    }else{ 
     this.suplemento.push(corrida);
-    WebStorageUtil.set(Constants.corrid, this.suplemento);
+    }
+    WebStorageUtil.set(Constants.corridsupl, this.suplemento);
    
   }
 
@@ -37,7 +42,7 @@ export class SuplementoService {
 
   update(corrida: Suplemento) {
   
-  this.suplemento = WebStorageUtil.get(Constants.corrid);
+  this.suplemento = WebStorageUtil.get(Constants.corridsupl);
   this.delete(corrida.descricao);
   this.save(corrida);
     
@@ -58,14 +63,14 @@ updateJson(corrida: Suplemento){
 }
 
   delete(corridas: string): boolean {
-    this.suplemento = WebStorageUtil.get(Constants.corrid);
+    this.suplemento = WebStorageUtil.get(Constants.corridsupl);
     this.suplemento = this.suplemento.filter((u) => {
     return u.descricao?.valueOf() != corridas?.valueOf();
     });
 
 
    
-    WebStorageUtil.set(Constants.corrid, this.suplemento);
+    WebStorageUtil.set(Constants.corridsupl, this.suplemento);
     return true;
   }
 
@@ -81,17 +86,23 @@ updateJson(corrida: Suplemento){
   }
 
   isExist(value: string): boolean {
-    this.suplemento = WebStorageUtil.get(Constants.corrid);
+    this.suplemento = WebStorageUtil.get(Constants.corridsupl);
+    console.log(this.suplemento.length+" ois");
+    if (this.suplemento===null || this.suplemento.length===undefined){
+      
+      return false;
+    }
     for (let u of this.suplemento) {
       if (u.descricao?.valueOf() == value?.valueOf()) {
         return true;
       }
-    }
+    
+  }
     return false;
   }
 
   getUsers(): Suplemento[] {
-    this.suplemento = WebStorageUtil.get(Constants.corrid);
+    this.suplemento = WebStorageUtil.get(Constants.corridsupl);
     return this.suplemento;
   }
 }

@@ -24,9 +24,9 @@ export class MarcaComponent implements OnInit {
   constructor(private marcaService: MarcaService) {}
 
   ngOnInit(): void {
-    SharedMarca.initializeWebStorage();
-    this.marca = new Marca('');
-    this.marcas = this.marcaService.getUsers();
+   // SharedMarca.initializeWebStorage();
+   this.marca = new Marca('', '');
+   this.marcas = JSON.parse(localStorage.getItem('marcas33')!);
   }
 
   onSubmit() {
@@ -48,7 +48,7 @@ export class MarcaComponent implements OnInit {
     this.isSuccess = true;
     this.message = 'Cadastro realizado com sucesso!';
     this.form.reset();
-    this.marca = new Marca('');
+    this.marca = new Marca('','');
     this.marcas= this.marcaService.getUsers();
     
   }

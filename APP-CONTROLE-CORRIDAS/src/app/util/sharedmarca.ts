@@ -11,7 +11,7 @@ export class SharedMarca {
     }
 
     //usuário definido na forma literal
-    let user = new Marca(Constants.corridasx);
+    let user = new Marca(Constants.corridasx,"suple");
 
     localStorage.setItem(Constants.corridasx, JSON.stringify(user));
     

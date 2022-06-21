@@ -6,14 +6,14 @@ export class SharedSuplemento {
 
   
   public static initializeWebStorage(): void {
-    if (localStorage.getItem(Constants.corrid) != null) {
+    if (localStorage.getItem(Constants.corridsupl) != null) {
       return;
     }
 
    
-    let user = new Suplemento(Constants.corrid);
+    let user = new Suplemento(Constants.corridsupl);
 
-    localStorage.setItem(Constants.corrid, JSON.stringify(user));
+    localStorage.setItem(Constants.corridsupl, JSON.stringify(user));
     
   }
 }
