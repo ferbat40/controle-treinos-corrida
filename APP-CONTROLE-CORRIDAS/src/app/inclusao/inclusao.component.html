@@ -76,6 +76,23 @@
         </div>
       </div>
 
+      <div class="input-field col s12">
+        <input
+          id="input-suplemento"
+          name="input-suplemento"
+          type="text"
+          class="validate"
+          [(ngModel)]="this.corrida.idSuplemento"
+          pattern="(?:\.|,|[0-9])*"
+          #suplemento="ngModel"
+          required
+        />
+        <label for="input-suplemento">ID Suplemento *</label>
+        <div class="red-text" [hidden]="distancia.valid || distancia.untouched">
+          informe o ID do suplemento.
+        </div>
+      </div>
+
       
       <div class="input-field col s12 l6">
         <input
@@ -109,6 +126,7 @@
         <th>Corrida</th>
         <th>Dificuldade</th>
         <th>Distancia KM</th>
+        <th>ID Suplemento</th>
         <th>Data</th>
         
       </tr>
@@ -120,6 +138,7 @@
         <td>{{ u.corridas }}</td>
         <td>{{ u.dificuldade }}</td>
         <td>{{ u.distancia}}</td>
+        <td>{{ u.idSuplemento}}</td>
         <td>{{ u.dataCorrida }}</td>
         <td class="right">
           <a

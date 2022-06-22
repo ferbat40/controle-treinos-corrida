@@ -16,9 +16,9 @@
           #local="ngModel"
           required
         />
-        <label for="input-local">Suplemento *</label>
+        <label for="input-local">Marca *</label>
         <div class="red-text" [hidden]="local.valid || local.untouched">
-          informe a descricao do suplemento com pelo menos duas palavras, com a primeira letra de cada palavra em maiúscula  
+          informe o nome da marca com pelo menos duas palavras, com a primeira letra de cada palavra em maiúscula  
         </div>
       </div>
 
@@ -28,14 +28,14 @@
           name="input-nmcorridas"
           type="text"
           class="validate"
-          [(ngModel)]="this.marca.descsuplemento"
+          [(ngModel)]="this.marca.descmarca"
           pattern="^(\s?[A-ZÀ-Ú][a-zà-ú]*)+(\s[a-zà-ú]*)?(\s[A-ZÀ-Ú][a-zà-ú]*)+"
           #nmcorridas="ngModel"
           required
         />
-        <label for="input-nmcorridas">ID Suplemento *</label>
+        <label for="input-nmcorridas">Descrição Marca *</label>
         <div class="red-text" [hidden]="nmcorridas.valid || nmcorridas.untouched">
-          Informe o ID da marca do suplemento com numeros.
+          Informe uma descrição para a marca do suplemento.
         </div>
       </div>
 
@@ -69,7 +69,7 @@
       <tr *ngFor="let u of marcas">
         <td>{{ u.id }}</td>
         <td>{{ u.descricao }}</td>
-        <td>{{ u.descsuplemento }}</td>
+        <td>{{ u.descmarca }}</td>
         
         <td class="right">
           <a

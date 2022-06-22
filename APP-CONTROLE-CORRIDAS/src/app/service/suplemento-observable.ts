@@ -1,17 +1,17 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
 
-import { ErrorUtil } from './../util/error-util';
+import { ErrorUtil } from '../util/error-util';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Marca } from '../model/marca';
+import { Suplemento } from '../model/suplemento';
 import { RoutesAPI } from '../util/routes-api';
 
 @Injectable({
   providedIn: 'root',
 })
-export class MarcaObservable {
-  URL = RoutesAPI.MARCAS;
+export class SuplementoObservable {
+  URL = RoutesAPI.SUPLEMENTOS;
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -19,20 +19,15 @@ export class MarcaObservable {
 
   constructor(private httpClient: HttpClient) {}
 
-  getById(id: number): Observable<Marca> {
-    console.log(this.httpClient.get<Marca>(`${this.URL}/${id}`)+" add");
-    
-    return this.httpClient.get<Marca>(`${this.URL}/${id}`)
-                                     
-    
+  getById(id: number): Observable<Suplemento> {
+    return this.httpClient.get<Suplemento>(`${this.URL}/${id}`)
+    .pipe(
+      catchError(ErrorUtil.handleError)
+    );
   }
 
-  
- 
-
-
-  save(transaction: Marca): Observable<Marca> {
-    return this.httpClient.post<Marca>(
+  save(transaction: Suplemento): Observable<Suplemento> {
+    return this.httpClient.post<Suplemento>(
       this.URL,
       transaction,
       this.httpOptions
@@ -41,8 +36,8 @@ export class MarcaObservable {
     );
   }
 
-  patch(transaction: Marca): Observable<Marca> {
-    return this.httpClient.patch<Marca>(
+  patch(transaction: Suplemento): Observable<Suplemento> {
+    return this.httpClient.patch<Suplemento>(
       this.URL,
       transaction,
       this.httpOptions
@@ -52,9 +47,9 @@ export class MarcaObservable {
   }
 
   
-  update(marca: Marca): Observable<Marca> {
-      return this.httpClient.put<Marca>(
-      `${RoutesAPI.MARCAS}/${marca.id}`,
+  update(marca: Suplemento): Observable<Suplemento> {
+      return this.httpClient.put<Suplemento>(
+      `${RoutesAPI.SUPLEMENTOS}/${marca.id}`,
       marca,
       this.httpOptions
     ).pipe(
@@ -62,9 +57,9 @@ export class MarcaObservable {
     );
   }
 
-  delete(marca: Marca): Observable<Marca> {
-      return this.httpClient.delete<Marca>(
-      `${RoutesAPI.MARCAS}/${marca.id}`,
+  delete(suplemento: Suplemento): Observable<Suplemento> {
+      return this.httpClient.delete<Suplemento>(
+      `${RoutesAPI.SUPLEMENTOS}/${suplemento.id}`,
        this.httpOptions
     ).pipe(
       catchError(ErrorUtil.handleError)

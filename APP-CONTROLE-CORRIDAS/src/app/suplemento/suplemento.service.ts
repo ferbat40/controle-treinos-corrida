@@ -1,9 +1,10 @@
 import { Constants } from 'src/app/util/constants';
 import { Injectable } from '@angular/core';
 import { Suplemento } from '../model/suplemento';
+import { Marca } from '../model/marca';
 import { WebStorageUtil } from 'src/app/util/web-storage-util';
-import {RacePromiseService} from '../service/race-promise.service'
-
+import {SuplementoObservable} from '../service/suplemento-observable';
+import {MarcaObservable} from '../service/marca-observable';
 
 
 @Injectable({
@@ -11,7 +12,12 @@ import {RacePromiseService} from '../service/race-promise.service'
 })
 export class SuplementoService {
   suplemento!: Suplemento[];
-  constructor(private racePromiseService: RacePromiseService) {
+  marcas!: Marca[];
+  constructor(private suplementoObservable: SuplementoObservable,
+              private marcaObservable: MarcaObservable
+    
+    
+    ) {
     this.suplemento = WebStorageUtil.get(Constants.corridsupl);
   }
 
@@ -28,15 +34,9 @@ export class SuplementoService {
   }
 
   saveJson(corrida: Suplemento){
-    /*let p1= this.racePromiseService.saveRace(corrida);
-    var p = Promise.resolve([p1]);
-    p.then(function(v){
-      console.log("Inclusão no db.json Efetuada com sucesso");
-    }).catch((err) => { 
-      console.log(err);
-     
-  });
-  */
+    this.suplementoObservable
+    .save(corrida)
+    .subscribe();
 
   }
 
@@ -51,15 +51,23 @@ export class SuplementoService {
 
 updateJson(corrida: Suplemento){
 
- /* let p1= this.racePromiseService.updateRace(corrida);
-  var p = Promise.resolve([p1]);
-  p.then(function(v){
-    console.log("Alteração no db.json Efetuada com sucesso");
-  }).catch((err) => { 
-    console.log(err);
-   
-});
-*/
+  this.suplementoObservable
+  .update(corrida)
+  .subscribe();
+
+
+  }
+
+getMarca(value : number){
+  this.marcas = []
+  this.marcaObservable
+  .getById(value)
+  .subscribe(marca => this.marcas.push(marca));
+  console.log("aqui "+this.marcas.length);
+  for (let u of this.marcas) {
+console.log("aqui "+u.descricao);
+  }
+  
 }
 
   delete(corridas: string): boolean {
@@ -75,14 +83,9 @@ updateJson(corrida: Suplemento){
   }
 
   deleteJson(corrida: Suplemento){
-    /*let p1= this.racePromiseService.deleteRace(corrida);
-    var p = Promise.resolve([p1]);
-    p.then(function(v){
-      console.log("Exclusão no db.json Efetuada com sucesso");
-    }).catch((err) => { 
-      console.log(err);
-     
-  });*/
+    this.suplementoObservable
+  .delete(corrida)
+  .subscribe();
   }
 
   isExist(value: string): boolean {

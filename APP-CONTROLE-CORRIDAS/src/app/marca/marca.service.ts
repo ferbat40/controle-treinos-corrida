@@ -27,18 +27,10 @@ export class MarcaService {
    
   }
 
+  
+
   saveJson(corrida: Marca){
-    /*let p1= this.racePromiseService.saveRace(corrida);
-    var p = Promise.resolve([p1]);
-    p.then(function(v){
-      console.log("Inclusão no db.json Efetuada com sucesso");
-    }).catch((err) => { 
-      console.log(err);
-     
-  });
-  */
-
-
+   
   this.marcaObservable
   .save(corrida)
   .subscribe();
@@ -59,7 +51,7 @@ updateJson(corrida: Marca){
   .update(corrida)
   .subscribe();
   
-
+  
  
 }
 

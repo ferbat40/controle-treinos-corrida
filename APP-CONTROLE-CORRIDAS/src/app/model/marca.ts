@@ -3,11 +3,11 @@
 export class Marca {
   id : number =  Math.floor(Math.random()*1000);
   descricao: string;
-  descsuplemento: string;
+  descmarca: string;
   
-  constructor(descricao: string, suplemento: string) {
+  constructor(descricao: string, descmarca: string) {
     this.descricao = descricao;
-    this.descsuplemento=suplemento;
+    this.descmarca=descmarca;
     
     
   }
@@ -16,7 +16,7 @@ export class Marca {
     let u: Marca = new Marca(marca.descricao,marca.descricao);
     u.descricao = marca.descricao;
     u.id=marca.id;
-    u.descsuplemento=marca.descsuplemento;
+    u.descmarca=marca.descmarca;
     return u;
   }
 }

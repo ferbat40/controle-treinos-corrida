@@ -41,7 +41,8 @@ export class SuplementoComponent implements OnInit {
     } else {
       this.suplementoService.updateJson(this.suplemento);
       this.suplementoService.update(this.suplemento);
-     
+      //this.suplementoService.getMarca(this.suplemento.marcaId);
+      
     }
   
     this.isShowMessage = true;

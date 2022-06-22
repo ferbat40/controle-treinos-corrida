@@ -28,12 +28,12 @@
           name="input-nmcorridas"
           type="text"
           class="validate"
-          [(ngModel)]="this.suplemento.suplementoId"
+          [(ngModel)]="this.suplemento.marcaId"
           pattern="(?:\.|,|[0-9])*"
           #nmcorridas="ngModel"
           required
         />
-        <label for="input-nmcorridas">ID Suplemento *</label>
+        <label for="input-nmcorridas">ID Marca *</label>
         <div class="red-text" [hidden]="nmcorridas.valid || nmcorridas.untouched">
           Informe o ID da marca do suplemento com numeros.
         </div>
@@ -62,7 +62,7 @@
       <tr>
         <th>ID</th>
         <th>Descricao</th>
-        <th>Suplemento ID</th>
+        <th>Marca ID</th>
         
         
       </tr>
@@ -72,7 +72,7 @@
       <tr *ngFor="let u of suplementos">
         <td>{{ u.id }}</td>
         <td>{{ u.descricao }}</td>
-        <td>{{ u.suplementoId }}</td>
+        <td>{{ u.marcaId }}</td>
         
         <td class="right">
           <a

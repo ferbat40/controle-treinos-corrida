@@ -23,37 +23,29 @@
       "distancia": "55",
       "dificuldade": "facilnada",
       "dataCorrida": "2022-06-11"
+    },
+    {
+      "id": 969,
+      "corridas": "dd",
+      "local": "A A",
+      "distancia": "1",
+      "dificuldade": "dd",
+      "dataCorrida": "2022-06-25",
+      "idSuplemento": "84"
     }
   ],
   "marcas": [
     {
-      "id": 490,
-      "descricao": "C C",
-      "suplemento": "D D"
-    },
+      "id": 94,
+      "descricao": "E E",
+      "descmarca": "D D"
+    }
+  ],
+  "suplementos": [
     {
-      "id": "A A",
-      "descricao": "F F"
-    },
-    {
-      "id": 108,
-      "descricao": "A B",
-      "suplemento": "C D"
-    },
-    {
-      "id": 863,
-      "descricao": "H H",
-      "suplemento": "N Nada"
-    },
-    {
-      "id": 781,
-      "descricao": "Q Q",
-      "suplemento": "W Wddd"
-    },
-    {
-      "id": 331,
-      "descricao": "O O",
-      "suplemento": "I I"
+      "id": 974,
+      "descricao": "Whey Protein",
+      "marcaId": "94"
     }
   ]
 }
