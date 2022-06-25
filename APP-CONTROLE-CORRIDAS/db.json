@@ -32,6 +32,110 @@
       "dificuldade": "dd",
       "dataCorrida": "2022-06-25",
       "idSuplemento": "84"
+    },
+    {
+      "id": 762,
+      "corridas": "bbb",
+      "local": "A A",
+      "distancia": "14",
+      "dificuldade": "ddd",
+      "dataCorrida": "2022-06-08",
+      "idSuplemento": "427",
+      "descsupl": "Whey Protein"
+    },
+    {
+      "id": 775,
+      "corridas": "eeee",
+      "local": "A A",
+      "distancia": "15",
+      "dificuldade": "rrrr",
+      "dataCorrida": "2022-06-10",
+      "idSuplemento": "579",
+      "descsupl": "Bc Bz"
+    },
+    {
+      "id": 807,
+      "corridas": "ddd",
+      "local": "A B",
+      "distancia": "4",
+      "dificuldade": "ddd",
+      "dataCorrida": "2022-05-29",
+      "idSuplemento": "579",
+      "descsupl": "Bc Bz"
+    },
+    {
+      "id": 606,
+      "corridas": "fff",
+      "local": "B B",
+      "distancia": "3",
+      "dificuldade": "ff",
+      "idSuplemento": "427",
+      "descsupl": "Whey Protein"
+    },
+    {
+      "id": 591,
+      "corridas": "ff",
+      "local": "V V",
+      "distancia": "44",
+      "dificuldade": "dd",
+      "idSuplemento": "579",
+      "descsupl": "Bc Bz"
+    },
+    {
+      "id": 497,
+      "corridas": "dd",
+      "local": "A D",
+      "distancia": "15",
+      "dificuldade": "ddd",
+      "dataCorrida": "2022-06-11",
+      "idSuplemento": "607",
+      "descsupl": "T T"
+    },
+    {
+      "id": 607,
+      "corridas": "cc",
+      "local": "M N",
+      "distancia": "23",
+      "dificuldade": "ddd",
+      "idSuplemento": "957",
+      "descsupl": "K K"
+    },
+    {
+      "id": 682,
+      "corridas": "cdd",
+      "local": "J J",
+      "distancia": "56",
+      "dificuldade": "dd",
+      "dataCorrida": "2022-06-07",
+      "idSuplemento": "957",
+      "descsupl": "K K"
+    },
+    {
+      "id": 219,
+      "corridas": "ccc",
+      "local": "A D",
+      "distancia": "11",
+      "dificuldade": "dd",
+      "idSuplemento": "100",
+      "descsupl": "R R"
+    },
+    {
+      "id": 502,
+      "corridas": "ddd2",
+      "local": "A A A A A A",
+      "distancia": "33",
+      "dificuldade": "sss",
+      "idSuplemento": "100",
+      "descsupl": "R R"
+    },
+    {
+      "id": 953,
+      "corridas": "dd",
+      "local": "D D",
+      "distancia": "1",
+      "dificuldade": "dd",
+      "idSuplemento": "100",
+      "descsupl": "R R"
     }
   ],
   "marcas": [
@@ -39,6 +143,41 @@
       "id": 94,
       "descricao": "E E",
       "descmarca": "D D"
+    },
+    {
+      "id": 751,
+      "descricao": "A B",
+      "descmarca": "B C"
+    },
+    {
+      "id": 17,
+      "descricao": "Growth Suplementos",
+      "descmarca": "Boa K"
+    },
+    {
+      "id": 795,
+      "descricao": "Al Am",
+      "descmarca": "Mais ou Menos"
+    },
+    {
+      "id": 875,
+      "descricao": "X X",
+      "descmarca": "K L"
+    },
+    {
+      "id": 486,
+      "descricao": "V V",
+      "descmarca": "T T"
+    },
+    {
+      "id": 964,
+      "descricao": "F F",
+      "descmarca": "O O"
+    },
+    {
+      "id": 129,
+      "descricao": "F G",
+      "descmarca": "R T"
     }
   ],
   "suplementos": [
@@ -46,6 +185,59 @@
       "id": 974,
       "descricao": "Whey Protein",
       "marcaId": "94"
+    },
+    {
+      "id": 427,
+      "descricao": "Whey Protein",
+      "marcaId": "751",
+      "descsupl": "A B"
+    },
+    {
+      "id": 579,
+      "descricao": "Bc Bz",
+      "marcaId": "17",
+      "descsupl": "Growth Suplementos"
+    },
+    {
+      "id": 903,
+      "descricao": "F G",
+      "marcaId": "795",
+      "descsupl": "Al Am"
+    },
+    {
+      "id": 644,
+      "descricao": "Z Z",
+      "marcaId": "875",
+      "descsupl": "X X"
+    },
+    {
+      "id": 923,
+      "descricao": "B B",
+      "marcaId": "17"
+    },
+    {
+      "id": 666,
+      "descricao": "B B",
+      "marcaId": "486",
+      "descsupl": "V V"
+    },
+    {
+      "id": 607,
+      "descricao": "T T",
+      "marcaId": "486",
+      "descsupl": "V V"
+    },
+    {
+      "id": 957,
+      "descricao": "K K",
+      "marcaId": "964",
+      "descsupl": "F F"
+    },
+    {
+      "id": 100,
+      "descricao": "R R",
+      "marcaId": "129",
+      "descsupl": "F G"
     }
   ]
 }

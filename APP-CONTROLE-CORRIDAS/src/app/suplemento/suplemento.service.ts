@@ -2,9 +2,11 @@ import { Constants } from 'src/app/util/constants';
 import { Injectable } from '@angular/core';
 import { Suplemento } from '../model/suplemento';
 import { Marca } from '../model/marca';
+import { Corrida } from '../model/corrida';
 import { WebStorageUtil } from 'src/app/util/web-storage-util';
 import {SuplementoObservable} from '../service/suplemento-observable';
 import {MarcaObservable} from '../service/marca-observable';
+import { CorridaService } from '.././inclusao/corrida.service';
 
 
 @Injectable({
@@ -13,12 +15,16 @@ import {MarcaObservable} from '../service/marca-observable';
 export class SuplementoService {
   suplemento!: Suplemento[];
   marcas!: Marca[];
+  corrida! : Corrida[];
   constructor(private suplementoObservable: SuplementoObservable,
-              private marcaObservable: MarcaObservable
+              private marcaObservable: MarcaObservable,
+              private corridaService: CorridaService
     
     
     ) {
     this.suplemento = WebStorageUtil.get(Constants.corridsupl);
+    this.marcas=[]
+    this.corrida=[]
   }
 
   save(corrida: Suplemento) {
@@ -34,6 +40,8 @@ export class SuplementoService {
   }
 
   saveJson(corrida: Suplemento){
+     corrida.descsupl=this.getMarca(corrida.marcaId);
+   
     this.suplementoObservable
     .save(corrida)
     .subscribe();
@@ -50,7 +58,7 @@ export class SuplementoService {
     }
 
 updateJson(corrida: Suplemento){
-
+corrida.descsupl=this.getMarca(corrida.marcaId);
   this.suplementoObservable
   .update(corrida)
   .subscribe();
@@ -58,16 +66,32 @@ updateJson(corrida: Suplemento){
 
   }
 
-getMarca(value : number){
-  this.marcas = []
-  this.marcaObservable
-  .getById(value)
-  .subscribe(marca => this.marcas.push(marca));
-  console.log("aqui "+this.marcas.length);
-  for (let u of this.marcas) {
-console.log("aqui "+u.descricao);
+getMarca(value : number): any{
+  
+   this.marcas.fill
+   this.marcaObservable.getById(value).subscribe(data=> this.marcas.push(data));
+    for (let u of this.marcas) {
+    if (u.id==value){
+       return u.descricao;
+    }
+
+    }
+    return "Falha ao buscar no db.json"
+}
+
+getCorrida(value : number): boolean{
+  
+ 
+  this.corrida=this.corridaService.getUsers();
+  for (let u of this.corrida) {
+    
+    if (u.idSuplemento==value){
+     return false;
+   }
   }
   
+ return true;
+   
 }
 
   delete(corridas: string): boolean {
@@ -90,7 +114,7 @@ console.log("aqui "+u.descricao);
 
   isExist(value: string): boolean {
     this.suplemento = WebStorageUtil.get(Constants.corridsupl);
-    console.log(this.suplemento.length+" ois");
+    
     if (this.suplemento===null || this.suplemento.length===undefined){
       
       return false;
@@ -106,6 +130,11 @@ console.log("aqui "+u.descricao);
 
   getUsers(): Suplemento[] {
     this.suplemento = WebStorageUtil.get(Constants.corridsupl);
+    if (this.suplemento===null || this.suplemento.length===undefined){
+      this.suplemento = []
+      //this.suplemento.push(corrida);
+    } 
+
     return this.suplemento;
   }
 }

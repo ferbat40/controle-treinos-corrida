@@ -24,7 +24,7 @@ export class MarcaComponent implements OnInit {
   constructor(private marcaService: MarcaService) {}
 
   ngOnInit(): void {
-   // SharedMarca.initializeWebStorage();
+   SharedMarca.initializeWebStorage();
    this.marca = new Marca('', '');
    this.marcas = JSON.parse(localStorage.getItem('marcas33')!);
   }
@@ -41,7 +41,7 @@ export class MarcaComponent implements OnInit {
     } else {
       this.marcaService.updateJson(this.marca);
       this.marcaService.update(this.marca);
-     
+      
     }
   
     this.isShowMessage = true;
@@ -55,11 +55,17 @@ export class MarcaComponent implements OnInit {
 
  
   onEdit(corrida: Marca) {
+    if (this.marcaService.getSuplemento(this.marca.id)===true){
+      
     let clone = Marca.clone(corrida);
     this.marca= clone;
+     } else{
+      alert("Existem Registro(s) cadastrados com essa marca,  alteração impossivel");
+    }
   }
 
   onDelete(username: string,corrida: Marca) {
+    if (this.marcaService.getSuplemento(corrida.id)===true){
     let confirmation = window.confirm(
       'Deseja remover ' + username
     );
@@ -77,7 +83,13 @@ export class MarcaComponent implements OnInit {
       this.message = 'Esse item não pode ser removido!';
     }
     this.marcas = this.marcaService.getUsers();
+  }else{
+    alert("Existem Registro(s) cadastrados com essa marca,  exclusão impossivel");
+  
   }
+  }
+
+
   modal = {
     show: false,
     titulo: '',

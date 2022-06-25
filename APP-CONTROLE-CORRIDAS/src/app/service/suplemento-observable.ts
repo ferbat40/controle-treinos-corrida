@@ -18,9 +18,9 @@ export class SuplementoObservable {
   };
 
   constructor(private httpClient: HttpClient) {}
-
+ // http://localhost:3000/suplementos?marcaId=910
   getById(id: number): Observable<Suplemento> {
-    return this.httpClient.get<Suplemento>(`${this.URL}/${id}`)
+    return this.httpClient.get<Suplemento>(`${this.URL}?marcaId=${id}`)
     .pipe(
       catchError(ErrorUtil.handleError)
     );

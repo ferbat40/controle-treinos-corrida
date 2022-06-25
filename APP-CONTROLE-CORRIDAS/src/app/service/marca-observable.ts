@@ -20,15 +20,14 @@ export class MarcaObservable {
   constructor(private httpClient: HttpClient) {}
 
   getById(id: number): Observable<Marca> {
-    console.log(this.httpClient.get<Marca>(`${this.URL}/${id}`)+" add");
-    
+      
     return this.httpClient.get<Marca>(`${this.URL}/${id}`)
                                      
     
   }
 
   
- 
+  
 
 
   save(transaction: Marca): Observable<Marca> {

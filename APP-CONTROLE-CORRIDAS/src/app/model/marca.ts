@@ -17,6 +17,7 @@ export class Marca {
     u.descricao = marca.descricao;
     u.id=marca.id;
     u.descmarca=marca.descmarca;
+    
     return u;
   }
 }

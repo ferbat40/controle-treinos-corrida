@@ -13,6 +13,7 @@ export class SuplementoComponent implements OnInit {
   @ViewChild('form') form!: NgForm;
   suplemento!: Suplemento;
   suplementos?: Suplemento[];
+  
 
   
 
@@ -27,6 +28,9 @@ export class SuplementoComponent implements OnInit {
     SharedSuplemento.initializeWebStorage();
     this.suplemento = new Suplemento('');
     this.suplementos = this.suplementoService.getUsers();
+    
+    
+      
   }
 
   onSubmit() {
@@ -41,8 +45,7 @@ export class SuplementoComponent implements OnInit {
     } else {
       this.suplementoService.updateJson(this.suplemento);
       this.suplementoService.update(this.suplemento);
-      //this.suplementoService.getMarca(this.suplemento.marcaId);
-      
+    
     }
   
     this.isShowMessage = true;
@@ -52,15 +55,28 @@ export class SuplementoComponent implements OnInit {
     this.suplemento = new Suplemento('');
     this.suplementos= this.suplementoService.getUsers();
     
+
   }
 
  
   onEdit(corrida: Suplemento) {
+    if (this.suplementoService.getCorrida(corrida.id)===true){
+   
     let clone = Suplemento.clone(corrida);
+    
     this.suplemento= clone;
+    }else{
+      alert("Existem Registro(s) cadastrados com esse suplemento,  alteração impossivel");
+  
+    }
+    
+    
+
   }
 
   onDelete(username: string,corrida: Suplemento) {
+    if (this.suplementoService.getCorrida(corrida.id)===true){
+   
     let confirmation = window.confirm(
       'Deseja remover ' + username
     );
@@ -78,7 +94,11 @@ export class SuplementoComponent implements OnInit {
       this.message = 'Esse item não pode ser removido!';
     }
     this.suplementos = this.suplementoService.getUsers();
+  }else{
+    alert("Existem Registro(s) cadastrados com esse suplemento,  exclusão impossivel");
+  
   }
+}
   modal = {
     show: false,
     titulo: '',

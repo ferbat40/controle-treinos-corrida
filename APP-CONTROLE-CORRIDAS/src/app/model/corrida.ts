@@ -7,7 +7,8 @@ export class Corrida {
   dificuldade?: string;
   dataCorrida?: Date;
   corridas: string;
-  idSuplemento?: string;
+  idSuplemento!: number;
+  descsupl!: string;
   
   constructor(corridas: string) {
     this.corridas = corridas;
@@ -24,6 +25,7 @@ export class Corrida {
     u.corridas = corrida.corridas;
     u.id=corrida.id;
     u.idSuplemento=corrida.idSuplemento;
+    u.descsupl=corrida.descsupl;
     return u;
   }
 }

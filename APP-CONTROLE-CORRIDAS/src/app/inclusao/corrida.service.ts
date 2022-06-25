@@ -1,6 +1,7 @@
 import { Constants } from 'src/app/util/constants';
 import { Injectable } from '@angular/core';
 import { Corrida } from '../model/corrida';
+import { Suplemento } from '../model/suplemento';
 import { WebStorageUtil } from 'src/app/util/web-storage-util';
 import {RacePromiseService} from '../service/race-promise.service'
 
@@ -11,8 +12,10 @@ import {RacePromiseService} from '../service/race-promise.service'
 })
 export class CorridaService {
   corrida!: Corrida[];
+  suplemento!: Suplemento[];
   constructor(private racePromiseService: RacePromiseService) {
     this.corrida = WebStorageUtil.get(Constants.corridas);
+    this.suplemento = [];
   }
 
   save(corrida: Corrida) {
@@ -28,6 +31,7 @@ export class CorridaService {
   }
 
   saveJson(corrida: Corrida){
+    corrida.descsupl=this.getSuplemento(corrida.idSuplemento);
     let p1= this.racePromiseService.saveRace(corrida);
     var p = Promise.resolve([p1]);
     p.then(function(v){
@@ -50,7 +54,7 @@ export class CorridaService {
     }
 
 updateJson(corrida: Corrida){
-
+  corrida.descsupl=this.getSuplemento(corrida.idSuplemento);
   let p1= this.racePromiseService.updateRace(corrida);
   var p = Promise.resolve([p1]);
   p.then(function(v){
@@ -61,6 +65,22 @@ updateJson(corrida: Corrida){
 });
 
 }
+
+
+getSuplemento(value : number): any{
+  
+  this.suplemento.fill
+  this.racePromiseService.getById(value).subscribe(data=> this.suplemento.push(data));
+   for (let u of this.suplemento) {
+   
+    if (u.id==value){
+      return u.descricao;
+   }
+
+   }
+   return "Falha ao buscar no db.json"
+}
+
 
   delete(corridas: string): boolean {
     this.corrida = WebStorageUtil.get(Constants.corridas);
@@ -101,6 +121,11 @@ updateJson(corrida: Corrida){
 
   getUsers(): Corrida[] {
     this.corrida = WebStorageUtil.get(Constants.corridas);
+    if (this.corrida===null || this.corrida.length===undefined){
+      this.corrida = []
+     
+    } 
+    
     return this.corrida;
   }
 }
