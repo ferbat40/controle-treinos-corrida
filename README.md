@@ -1,3 +1,19 @@
+# APP-CONTROLE-CORRIDAS
+
+A Aplicação ira cadastrar os treinos de corrida do usuario, cadastrando local, dificuldade do treino,
+checklist da corrida (uso de pre treino, oculos , protetor solar etc). Tera tambem um cadastro de
+suplementos e marcas , para que o usuario possa escolherv algun em uma determinada corrida. Sera
+feito um historico de todas as corridas do usuario com sua data respectiva. O usuario tera a opção de
+excluir, alterar ou visualizar um treino de corrida.
+
+# Endereço de Deploy - GitHub Pages
+
+https://ferbat40.github.io/app-controle-corridas
+
+# Protótipo
+
+https://www.figma.com/file/3pakM5jUY9TgYlCzNCwJYJ/Untitled?node-id=0%3A1
+
 - [x] Criar o repositório no GitHub com a estrutura do Gitflow, ou seja, branches main e develop.
 - [x] Usar componentes de algum framework CSS (Bootstrap, Materialize ou outro)
 - [x] Apresentar as telas com layout responsivo usando ou não algum framework CSS.
