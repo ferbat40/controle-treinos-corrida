@@ -1,11 +1,3 @@
-# APP-CONTROLE-CORRIDAS
-
-A Aplicação ira cadastrar os treinos de corrida do usuario, cadastrando local, dificuldade do treino,
-checklist da corrida (uso de pre treino, oculos , protetor solar etc). Tera tambem um cadastro de
-suplementos e marcas , para que o usuario possa escolherv algun em uma determinada corrida. Sera
-feito um historico de todas as corridas do usuario com sua data respectiva. O usuario tera a opção de
-excluir, alterar ou visualizar um treino de corrida.
-
 # Endereço de Deploy - GitHub Pages
 
 https://ferbat40.github.io/app-controle-corridas
